@@ -1,7 +1,4 @@
-# Stanley Maloney — Full-Stack (PHP/Laravel, React/React Native)
-
-Atuo na **DATAFull** (govtech). Entrego backends Laravel + PostgreSQL, dashboards Blade/Tailwind e apps RN com sync offline.
-Alguns códigos são privados; abaixo mostro **atividade real** e **cases**.
+# Stanley Maloney
 
 ### 📊 Atividade (auto-atualizada)
 ![Metrics](https://raw.githubusercontent.com/Stanley-Datafull/Stanley-Datafull/main/github-metrics.svg)
