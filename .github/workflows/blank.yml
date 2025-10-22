@@ -1,0 +1,47 @@
+# Nome do Workflow
+name: GitHub Metrics
+
+on:
+  # Roda automaticamente a cada 6 horas
+  schedule:
+    - cron: "0 */6 * * *"
+  
+  # Permite que você rode manualmente pela aba "Actions"
+  workflow_dispatch:
+  
+  # Roda também quando você atualiza o README (push)
+  push:
+    branches:
+      - main
+
+jobs:
+  github-metrics:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Necessário para salvar o arquivo .svg no repositório
+    steps:
+      - uses: lowlighter/metrics@latest
+        with:
+          # Token do GitHub (necessário para ler repositórios)
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+          # Nome do arquivo que será gerado
+          filename: github-metrics.svg
+
+          # --- CONFIGURAÇÕES PRINCIPAIS ---
+
+          # Habilita a leitura de repositórios privados
+          plugin_base_include_private: true  
+
+          # Plugin de Estatísticas (Corrige o "Something went wrong")
+          plugin_stats: yes
+          plugin_stats_total_commits: yes
+          plugin_stats_private_commits: yes
+          plugin_stats_threshold: 0%
+
+          # Plugin de Linguagens (Corrige o "No languages data")
+          plugin_languages: yes
+          plugin_languages_indepth: yes       # Análise profunda
+          plugin_languages_threshold: 0%      # Mostrar todas as linguagens
+          plugin_languages_limit: 8           # Mostrar as 8 principais
+          plugin_languages_analysis_timeout: 15 # Mais tempo para analisar
